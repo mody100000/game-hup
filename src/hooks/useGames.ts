@@ -23,25 +23,25 @@ interface FatchGamesResponse {
 const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
-  const [islodding, setLodding] = useState(false);
+  const [isloading, setloading] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
-    setLodding(true);
+    setloading(true);
     apiClient
       .get<FatchGamesResponse>("/games", { signal: controller.signal })
       .then((res) => {
         setGames(res.data.results);
-        setLodding(false);
+        setloading(false);
       })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
-        setLodding(false);
+        setloading(false);
       });
 
     return () => controller.abort();
   }, []);
-  return { games, error, islodding };
+  return { games, error, isloading };
 };
 
 export default useGames;
