@@ -12,7 +12,7 @@ import { BsGlobe } from "react-icons/bs";
 import { HStack, Icon, Text } from "@chakra-ui/react";
 import { Platform } from "../hooks/useGames";
 import { IconType } from "react-icons/lib";
-
+import { CgWebsite } from "react-icons/cg";
 interface Props {
   platforms: Platform[];
 }
@@ -27,6 +27,7 @@ const PlatformIconList = ({ platforms }: Props) => {
     ios: MdPhoneIphone,
     global: BsGlobe,
     android: FaAndroid,
+    web: CgWebsite,
   };
   return (
     <HStack margin={1}>
